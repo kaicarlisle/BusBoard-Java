@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class BusStops {
 	private ArrayList<BusStop> member;
 	
+	public void setMember(BusStop busStop) {
+		member.add(busStop);
+	}
+	
 	public String getATCO(Integer index) {
 		return member.get(index).getAtcocode();
 	}

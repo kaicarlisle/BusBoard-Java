@@ -12,8 +12,6 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-//given an ATCO code, makes API get request, and handles returned JSON of buses
-//returns JSON for each bus
 public class ApiHandler {
 	
 	private	Client client;
