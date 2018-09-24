@@ -8,4 +8,8 @@ public class BusStops {
 	public String getATCO(Integer index) {
 		return member.get(index).getAtcocode();
 	}
+	
+	public ArrayList<BusStop> getStops() {
+		return this.member;
+	}
 }

@@ -1,6 +1,6 @@
 package training.busboard;
 
-public class PostcodeDetails {
+public class LatLong {
 	private double longitude;
 	private double latitude;
 	

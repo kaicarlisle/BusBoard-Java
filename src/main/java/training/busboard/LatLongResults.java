@@ -1,10 +1,10 @@
 package training.busboard;
 
-public class Postcode {
+public class LatLongResults {
 	
-	private PostcodeDetails result;
+	private LatLong result;
 	
-	public void setResult(PostcodeDetails details) {
+	public void setResult(LatLong details) {
 		this.result = details;
 	}
 	

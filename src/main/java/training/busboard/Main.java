@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {	
     public static void main(String args[]) {
     	ApiHandler API;
-    	Postcode postcode;
+    	LatLongResults postcode;
     	String lat;
     	String lon;
     	BusStops busStops;
@@ -16,16 +16,22 @@ public class Main {
     	input.closeScanner();
     	
     	API = new ApiHandler();
-    	postcode = API.makeRequestLatLonFromPostcode(userPostcode);
-    	lat = String.valueOf(postcode.getLat());
-    	lon = String.valueOf(postcode.getLon());
+    	try {
+			postcode = API.makeRequestLatLonFromPostcode(userPostcode);
+			lat = String.valueOf(postcode.getLat());
+	    	lon = String.valueOf(postcode.getLon());
+	    	
+	    	busStops = API.makeRequestATCOFromLatLon(lat, lon);
+	    	for (int i = 0; i < busStops.getStops().size() - 1; i++) {
+	    		ATCOs.add(busStops.getATCO(i));
+	    	}
+	    	
+	    	for (String ATCO : ATCOs) {
+	    		System.out.println(API.makeRequestBusStopTimetableFromATCO(ATCO));
+	    	}
+		} catch (BadAPIResponseException e) {
+			System.out.println(e.error);
+		}
     	
-    	busStops = API.makeRequestATCOFromLatLon(lat, lon);
-    	ATCOs.add(busStops.getATCO(0));
-    	ATCOs.add(busStops.getATCO(1));
-    	
-    	for (String ATCO : ATCOs) {
-    		System.out.println(API.makeRequestBusFromATCO(ATCO));
-    	}
     }
 }	

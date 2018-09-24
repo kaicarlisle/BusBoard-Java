@@ -1,6 +1,6 @@
 package training.busboard;
 
-public class BusJsonBus {
+public class Bus {
 	private String line_name;
 	private String best_departure_estimate;
 	private String direction;
@@ -17,8 +17,12 @@ public class BusJsonBus {
 		return direction;
 	}
 	
+	public static String headerString() {
+		return "Time\tLine\tDestination\n\t---------------------------------------";
+	}
+	
 	@Override
 	public String toString() {
-		return this.line_name + "\t" + this.direction + "\t" + this.best_departure_estimate;
+		return this.best_departure_estimate + "\t" + this.line_name + "\t" + this.direction;
 	}
 }
