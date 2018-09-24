@@ -1,18 +1,11 @@
 package training.busboard;
 
+import java.util.ArrayList;
+
 public class BusStops {
-	private String source;
-	
-	public void setSource(String source) {
-		this.source = source;
-	}
+	private ArrayList<BusStop> member;
 	
 	public String getATCO(Integer index) {
-		return "0180BAC30592";
-	}
-	
-	@Override
-	public String toString() {
-		return this.source;
+		return member.get(index).getAtcocode();
 	}
 }

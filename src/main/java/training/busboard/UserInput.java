@@ -11,7 +11,7 @@ public class UserInput {
 	}
 	
 	public String getInput() {
-		System.out.println("Enter lat/long");
+		System.out.println("Enter Postcode");
 		inputFromUser = scan.nextLine();
 		
 		return inputFromUser;
