@@ -11,7 +11,7 @@ public class UserInput {
 	}
 	
 	public String getInput() {
-		System.out.println("Enter Postcode");
+		System.out.println("Enter UK Postcode");
 		inputFromUser = scan.nextLine();
 		
 		return inputFromUser;
