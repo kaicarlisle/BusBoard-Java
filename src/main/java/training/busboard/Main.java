@@ -1,7 +1,5 @@
 package training.busboard;
 
-import java.util.ArrayList;
-
 public class Main {	
     public static void main(String args[]) {
     	ApiHandler API;
@@ -9,7 +7,6 @@ public class Main {
     	String lat;
     	String lon;
     	BusStops busStops;
-    	ArrayList<String> ATCOs = new ArrayList<String>();
     	
     	UserInput input = new UserInput();
     	String userPostcode = input.getInput();
@@ -25,14 +22,10 @@ public class Main {
 	    	//get a busStops object that contains a list of the bus stops nearest to the lat/long
 	    	busStops = API.makeRequestATCOFromLatLon(lat, lon);
 	    	
-	    	//add each bus stop's ATCO code to the list of ATCOs
+	    	//get each timetable for the bus stop, and display it along with the distance
 	    	for (int i = 0; i < Math.min(busStops.getStops().size() - 1, 2); i++) {
-	    		ATCOs.add(busStops.getATCO(i));
-	    	}
-	    	
-	    	//get and print the timetable for each bus stop in the list of ATCOs
-	    	for (String ATCO : ATCOs) {
-	    		System.out.println(API.makeRequestBusStopTimetableFromATCO(ATCO));
+	    		BusStopTimetable timetable = API.makeRequestBusStopTimetableFromATCO(busStops.getATCO(i));
+	    		System.out.println(timetable.display(busStops.getStops().get(i).getDistance().toString()));
 	    	}
 		} catch (BadAPIResponseException e) {
 			System.out.println(e.error);

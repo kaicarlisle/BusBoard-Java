@@ -10,9 +10,8 @@ public class BusStopTimetable {
 		this.name = name;
 	}
 	
-	@Override
-	public String toString() {
-		String ret = this.name;
+	public String display(String distance) {
+		String ret = this.name + " - " + distance + "m away";
 		ret += "\n\t" + Bus.headerString();
 		for (Bus bus : this.departures.getAll()) {
 			ret += "\n\t" + bus;
