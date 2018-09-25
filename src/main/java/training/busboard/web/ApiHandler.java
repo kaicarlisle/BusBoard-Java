@@ -1,4 +1,4 @@
-package training.busboard;
+package training.busboard.web;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

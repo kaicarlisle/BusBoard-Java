@@ -1,13 +1,13 @@
 package training.busboard.web;
 
 public class BusInfo {
-    private final String postcode;
+    private String timetable;
 
-    public BusInfo(String postcode) {
-        this.postcode = postcode;
+    public BusInfo(String timetable) {
+        this.timetable = timetable;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getTimetable() {
+        return timetable;
     }
 }

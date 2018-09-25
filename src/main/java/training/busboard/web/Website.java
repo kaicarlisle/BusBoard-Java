@@ -18,7 +18,10 @@ public class Website {
 
     @RequestMapping("/busInfo")
     ModelAndView busInfo(@RequestParam("postcode") String postcode) {
-        return new ModelAndView("info", "busInfo", new BusInfo(postcode));
+    	GetBusResults getResults = new GetBusResults(postcode);
+    	String results = getResults.result;
+    	
+        return new ModelAndView("info", "busInfo", new BusInfo(results));
     }
 
     public static void main(String[] args) throws Exception {

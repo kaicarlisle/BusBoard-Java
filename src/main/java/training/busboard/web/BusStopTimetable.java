@@ -1,4 +1,4 @@
-package training.busboard;
+package training.busboard.web;
 
 import java.util.ArrayList;
 

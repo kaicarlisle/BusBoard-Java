@@ -1,4 +1,4 @@
-package training.busboard;
+package training.busboard.web;
 
 public class Bus {
 	private String line_name;
