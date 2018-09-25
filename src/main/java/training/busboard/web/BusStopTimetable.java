@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class BusStopTimetable {
 	private String name;
 	private BusDepartures departures;
+	public String displayString;
 	
 	public void setName(String name) {
 		this.name = name;

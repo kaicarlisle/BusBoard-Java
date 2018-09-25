@@ -1,13 +1,21 @@
 package training.busboard.web;
 
-public class BusInfo {
-    private String timetable;
+import java.util.ArrayList;
 
-    public BusInfo(String timetable) {
+public class BusInfo {
+    private ArrayList<BusStopTimetable> timetable;
+
+    public BusInfo(ArrayList<BusStopTimetable> timetable) {
         this.timetable = timetable;
     }
 
-    public String getTimetable() {
+    public ArrayList<BusStopTimetable> getTimetable() {
         return timetable;
+    }
+    
+    public void setDisplayString() {
+    	for (BusStopTimetable t : this.timetable) {
+    		t.displayString = t.display("35");
+    	}
     }
 }

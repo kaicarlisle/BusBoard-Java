@@ -1,5 +1,7 @@
 package training.busboard.web;
 
+import java.util.ArrayList;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -19,9 +21,12 @@ public class Website {
     @RequestMapping("/busInfo")
     ModelAndView busInfo(@RequestParam("postcode") String postcode) {
     	GetBusResults getResults = new GetBusResults(postcode);
-    	String results = getResults.result;
+    	ArrayList<BusStopTimetable> results = getResults.timetables;
     	
-        return new ModelAndView("info", "busInfo", new BusInfo(results));
+    	BusInfo busInfo = new BusInfo(results);
+    	busInfo.setDisplayString();
+    	
+        return new ModelAndView("info", "busInfo", busInfo);
     }
 
     public static void main(String[] args) throws Exception {

@@ -6,11 +6,18 @@
     <title>Bus Information</title>
 </head>
 <body>
-<div layout:fragment="content" class="container body-content">
-    <h2>Bus Information</h2>
-    <div>
-        <p><span th:text="${busInfo.timetable}"></span></p>
-    </div>
-</div>
+	<div layout:fragment="content" class="container body-content">
+		<h2>Bus Information</h2>
+		<div>
+			<p>please display this please</p>
+			<table>
+				<tbody>
+					<tr th:each="bus: ${busInfo.timetable}">
+						<td th:text="${bus.displayString)}">HELP</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

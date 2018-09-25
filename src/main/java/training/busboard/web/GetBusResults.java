@@ -1,12 +1,14 @@
 package training.busboard.web;
 
+import java.util.ArrayList;
+
 public class GetBusResults {
 	private ApiHandler API;
 	private LatLongResults latLongPostcode;
 	private String lat;
 	private String lon;
 	private BusStops busStops;
-	public String result = "";
+	public ArrayList<BusStopTimetable> timetables = new ArrayList<BusStopTimetable>();
 	
     public GetBusResults(String userPostcode) {   	
     	this.API = new ApiHandler();
@@ -21,8 +23,8 @@ public class GetBusResults {
 	    	
 	    	//get each timetable for the bus stop, and display it along with the distance
 	    	for (int i = 0; i < Math.min(busStops.getStops().size() - 1, 2); i++) {
-	    		BusStopTimetable timetable = API.makeRequestBusStopTimetableFromATCO(busStops.getATCO(i));
-	    		result += timetable.display(busStops.getStops().get(i).getDistance().toString()) + "\n";
+	    		timetables.add(API.makeRequestBusStopTimetableFromATCO(busStops.getATCO(i)));
+//	    		timetables.add(timetable.display(busStops.getStops().get(i).getDistance().toString()));
 	    	}
 		} catch (BadAPIResponseException e) {
 			System.out.println(e.error);
