@@ -15,6 +15,11 @@
 						<table>
 							<thead th:text="${timetable.busStopName}"></thead>
 							<tbody>
+								<tr>
+									<td>Time</td>
+									<td>Line</td>
+									<td>Direction</td>
+								</tr>
 								<tr th:each="departure: ${timetable.departures.all}">
 									<td th:text="${departure.best_departure_estimate}"></td>
 									<td th:text="${departure.line_name}"></td>

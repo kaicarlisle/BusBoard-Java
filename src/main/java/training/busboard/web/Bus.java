@@ -1,9 +1,9 @@
 package training.busboard.web;
 
 public class Bus {
-	private String line_name;
-	private String best_departure_estimate;
-	private String direction;
+	public String line_name;
+	public String best_departure_estimate;
+	public String direction;
 	
 	public void setLine_Name(String line_name) {
 		this.line_name = line_name;
@@ -21,11 +21,11 @@ public class Bus {
 		return this.direction;
 	}
 	
-	public String getLineName() {
+	public String getLine_Name() {
 		return this.line_name;
 	}
 	
-	public String getBestDepartureEstimate() {
+	public String getBest_Departure_Estimate() {
 		return this.best_departure_estimate;
 	}
 }
