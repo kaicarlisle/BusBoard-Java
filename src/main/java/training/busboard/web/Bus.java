@@ -17,10 +17,6 @@ public class Bus {
 		return direction;
 	}
 	
-	public static String headerString() {
-		return "Time\tLine\tDestination\n\t---------------------------------------";
-	}
-	
 	@Override
 	public String toString() {
 		return this.best_departure_estimate + "\t" + this.line_name + "\t" + this.direction;

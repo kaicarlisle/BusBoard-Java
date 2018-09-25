@@ -7,7 +7,7 @@ public class GetBusResults {
 	private LatLongResults latLongPostcode;
 	private String lat;
 	private String lon;
-	private BusStops busStops;
+	public BusStops busStops;
 	public ArrayList<BusStopTimetable> timetables = new ArrayList<BusStopTimetable>();
 	
     public GetBusResults(String userPostcode) {   	
@@ -23,8 +23,9 @@ public class GetBusResults {
 	    	
 	    	//get each timetable for the bus stop, and display it along with the distance
 	    	for (int i = 0; i < Math.min(busStops.getStops().size() - 1, 2); i++) {
-	    		timetables.add(API.makeRequestBusStopTimetableFromATCO(busStops.getATCO(i)));
-//	    		timetables.add(timetable.display(busStops.getStops().get(i).getDistance().toString()));
+	    		BusStopTimetable timetable = API.makeRequestBusStopTimetableFromATCO(busStops.getATCO(i));
+	    		timetable.setBusStopName(busStops.getStops().get(i).getDistance().toString());
+	    		this.timetables.add(timetable);
 	    	}
 		} catch (BadAPIResponseException e) {
 			System.out.println(e.error);

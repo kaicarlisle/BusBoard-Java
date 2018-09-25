@@ -9,11 +9,17 @@
 	<div layout:fragment="content" class="container body-content">
 		<h2>Bus Information</h2>
 		<div>
-			<p>please display this please</p>
 			<table>
 				<tbody>
-					<tr th:each="bus: ${busInfo.timetable}">
-						<td th:text="${bus.displayString)}">HELP</td>
+					<tr th:each="timetable: ${busInfo.timetables}">
+						<td th:text="${timetable.busStopName}"></td>
+						<table>
+							<tbody>
+								<tr th:each="departure: ${timetable.departures.all}">
+									<td th:text="${departure}"></td>
+								</tr>
+							</tbody>
+						</table>
 					</tr>
 				</tbody>
 			</table>

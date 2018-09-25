@@ -5,22 +5,23 @@ import java.util.ArrayList;
 public class BusStopTimetable {
 	private String name;
 	private BusDepartures departures;
-	public String displayString;
 	
+	private String busStopName;
+	
+//	public String headerString = "Time\tLine\tDestination\n\t---------------------------------------";
+	
+	public void setBusStopName(String distance) {
+		this.busStopName = this.name + " - " + distance + "m away";
+	}
+	
+	public String getBusStopName() {
+		return this.busStopName;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public String display(String distance) {
-		String ret = this.name + " - " + distance + "m away";
-		ret += "\n\t" + Bus.headerString();
-		for (Bus bus : this.departures.getAll()) {
-			ret += "\n\t" + bus;
-		}
-		ret += "\n";
-		return ret;
-	}
-
 	public void setDepartures(BusDepartures departures) {
 		this.departures = departures;
 	}
