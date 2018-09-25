@@ -12,11 +12,13 @@
 			<table>
 				<tbody>
 					<tr th:each="timetable: ${busInfo.timetables}">
-						<td th:text="${timetable.busStopName}"></td>
 						<table>
+							<thead th:text="${timetable.busStopName}"></thead>
 							<tbody>
 								<tr th:each="departure: ${timetable.departures.all}">
-									<td th:text="${departure}"></td>
+									<td th:text="${departure.best_departure_estimate}"></td>
+									<td th:text="${departure.line_name}"></td>
+									<td th:text="${departure.direction}"></td>
 								</tr>
 							</tbody>
 						</table>

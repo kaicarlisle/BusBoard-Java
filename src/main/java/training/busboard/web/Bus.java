@@ -13,12 +13,19 @@ public class Bus {
 		this.best_departure_estimate = best_departure_estimate;
 	}
 
-	public String getDirection() {
-		return direction;
+	public void setDirection(String direction) {
+		this.direction = direction;
 	}
 	
-	@Override
-	public String toString() {
-		return this.best_departure_estimate + "\t" + this.line_name + "\t" + this.direction;
+	public String getDirection() {
+		return this.direction;
+	}
+	
+	public String getLineName() {
+		return this.line_name;
+	}
+	
+	public String getBestDepartureEstimate() {
+		return this.best_departure_estimate;
 	}
 }
