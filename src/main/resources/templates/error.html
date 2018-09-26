@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Bus Information</title>
+	<style>
+	td {
+		padding-left: 5px;
+	}
+	</style>
+</head>
+<body>
+	<div layout:fragment="content" class="container body-content">
+		<div class="jumbotron">
+			<h2 th:text="'Bus stops near ' + ${error.postcode}"></h2>
+		</div>
+		<h3>Unfortunately there was an error:</h3>
+		<div style="background-color:black; color:#198406">
+			<font face="consolas">
+				<p th:text="'> ' + ${error.error}"></p>
+				<p th:text="'> ' + ${error.apiMessage}"></p>
+			</font>
+		</div>
+	</div>
+</body>
+</html>

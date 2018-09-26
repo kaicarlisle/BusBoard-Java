@@ -13,11 +13,11 @@
 <body>
 	<div layout:fragment="content" class="container body-content">
 		<div class="jumbotron">
-			<h2 th:text="'Bus information near ' + ${busInfo.postcode}"></h2>
+			<h2 th:text="'Bus stops near ' + ${busInfo.postcode}"></h2>
 		</div>
 		<table style="width:100%">
 			<tr th:each="timetable: ${busInfo.timetables}">
-				<h4 th:text="${timetable.name} + ' ~ ' + ${timetable.distance} + 'm away'"></h4>
+				<h4 th:text="${timetable.name} + ' (~ ' + ${timetable.distance} + 'm away)'"></h4>
 				<table style="width:100%; border:1px solid black; border-collapse: collapse;">
 					<tr style="border:1px solid black; border-collapse: collapse;">
 						<th style="width:80px">Time</th>

@@ -18,11 +18,16 @@ public class Website {
 
     @RequestMapping("/busInfo")
     ModelAndView busInfo(@RequestParam("postcode") String postcode) {
-    	GetBusResults getResults = new GetBusResults(postcode);
-    	BusInfo busInfo = new BusInfo(getResults.getTimetables());
-    	busInfo.setPostcode(postcode);
-    	
-        return new ModelAndView("info", "busInfo", busInfo);
+    	try {
+    		GetBusResults getResults = new GetBusResults(postcode);
+        	BusInfo busInfo = new BusInfo(getResults.getTimetables());
+        	busInfo.setPostcode(postcode);
+        	
+            return new ModelAndView("info", "busInfo", busInfo);
+    	} catch (BadAPIResponseException e) {
+    		e.postcode = postcode;
+    		return new ModelAndView("error", "error", e);
+    	}
     }
 
     public static void main(String[] args) throws Exception {

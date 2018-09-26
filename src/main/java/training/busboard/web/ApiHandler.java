@@ -14,6 +14,8 @@ import com.google.gson.GsonBuilder;
 
 public class ApiHandler {
 	
+	private final Integer max_number_of_buses = 6;
+	
 	private final String app_id = "2e66d564";
 	private final String app_key = "c30acca6ae1ea945a9855d194b2c2b1f";
 //	private final String app_id = "dbc94df4";
@@ -41,7 +43,7 @@ public class ApiHandler {
 		makeRequest();
 		LatLongResults results = this.gson.fromJson(this.response.readEntity(String.class), LatLongResults.class);
 		if (this.responseStatus != 200 || results == null) {
-			throw new BadAPIResponseException("Bad postcode");
+			throw new BadAPIResponseException("Invalid postcode entered", this.response.getStatusInfo().getReasonPhrase());
 		}
 		return results;
 	}
@@ -51,17 +53,17 @@ public class ApiHandler {
 		makeRequest();
 		BusStops results = this.gson.fromJson(this.response.readEntity(String.class), BusStops.class);
 		if (this.responseStatus != 200 || results == null) {
-			throw new BadAPIResponseException("No bus stops found");
+			throw new BadAPIResponseException("No bus stops found nearby", this.response.getStatusInfo().getReasonPhrase());
 		}
 		return results;
 	}
 	
 	public BusStopTimetable makeRequestBusStopTimetableFromATCO(String ATCO) throws BadAPIResponseException {
-		this.URL = "https://transportapi.com/v3/uk/bus/stop/"+ATCO+"/live.json?group=no&limit=5&nextbuses=yes&app_id="+app_id+"&app_key="+app_key;
+		this.URL = "https://transportapi.com/v3/uk/bus/stop/"+ATCO+"/live.json?group=no&limit="+max_number_of_buses.toString()+"&nextbuses=yes&app_id="+app_id+"&app_key="+app_key;
 		makeRequest();
 		BusStopTimetable results = this.gson.fromJson(this.response.readEntity(String.class), BusStopTimetable.class);
 		if (this.responseStatus != 200 || results.getDepartures().getAll() == null) {
-			throw new BadAPIResponseException("No buses timetabled");
+			throw new BadAPIResponseException("No buses timetabled for this bus stop", this.response.getStatusInfo().getReasonPhrase());
 		}
 		return results;
 	}
