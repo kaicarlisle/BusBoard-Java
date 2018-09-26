@@ -17,7 +17,7 @@
 		</div>
 		<table style="width:100%">
 			<tr th:each="timetable: ${busInfo.timetables}">
-				<h4 th:text="${timetable.busStopName}"></h4>
+				<h4 th:text="${timetable.name} + ' ~ ' + ${timetable.distance} + 'm away'"></h4>
 				<table style="width:100%; border:1px solid black; border-collapse: collapse;">
 					<tr style="border:1px solid black; border-collapse: collapse;">
 						<th style="width:80px">Time</th>

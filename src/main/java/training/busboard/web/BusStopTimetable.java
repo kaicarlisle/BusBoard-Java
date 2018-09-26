@@ -6,20 +6,22 @@ public class BusStopTimetable {
 	private String name;
 	private BusDepartures departures;
 	
-	private String busStopName;
+	private String distance;
 	
-//	public String headerString = "Time\tLine\tDestination\n\t---------------------------------------";
-	
-	public void setBusStopName(String distance) {
-		this.busStopName = this.name + " - " + distance + "m away";
+	public void setDistance(String distance) {
+		this.distance = distance;
 	}
 	
-	public String getBusStopName() {
-		return this.busStopName;
+	public String getDistance() {
+		return Integer.valueOf(this.distance).toString();
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 	
 	public void setDepartures(BusDepartures departures) {

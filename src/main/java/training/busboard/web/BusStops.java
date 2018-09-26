@@ -19,7 +19,7 @@ public class BusStops {
 	
 	public class BusStop {
 		private String atcocode;
-		private Float distance;
+		private Integer distance;
 
 		public String getAtcocode() {
 			return atcocode;
@@ -30,10 +30,10 @@ public class BusStops {
 		}
 		
 		public void setDistance(Float distance) {
-			this.distance = distance;
+			this.distance = distance.intValue();
 		}
 		
-		public Float getDistance() {
+		public Integer getDistance() {
 			return this.distance;
 		}
 	}

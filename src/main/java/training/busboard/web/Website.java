@@ -19,7 +19,7 @@ public class Website {
     @RequestMapping("/busInfo")
     ModelAndView busInfo(@RequestParam("postcode") String postcode) {
     	GetBusResults getResults = new GetBusResults(postcode);
-    	BusInfo busInfo = new BusInfo(getResults.timetables);
+    	BusInfo busInfo = new BusInfo(getResults.getTimetables());
     	busInfo.setPostcode(postcode);
     	
         return new ModelAndView("info", "busInfo", busInfo);
