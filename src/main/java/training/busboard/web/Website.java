@@ -20,6 +20,7 @@ public class Website {
     ModelAndView busInfo(@RequestParam("postcode") String postcode) {
     	GetBusResults getResults = new GetBusResults(postcode);
     	BusInfo busInfo = new BusInfo(getResults.timetables);
+    	busInfo.setPostcode(postcode);
     	
         return new ModelAndView("info", "busInfo", busInfo);
     }

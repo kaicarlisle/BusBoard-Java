@@ -3,34 +3,35 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout">
 <head>
-    <title>Bus Information</title>
+    <title  th:text="'Bus information near ' + ${busInfo.postcode}">Bus Information</title>
+	<style>
+	td {
+		padding-left: 5px;
+	}
+	</style>
 </head>
 <body>
 	<div layout:fragment="content" class="container body-content">
-		<h2>Bus Information</h2>
-		<div>
-			<table>
-				<tbody>
-					<tr th:each="timetable: ${busInfo.timetables}">
-						<table>
-							<thead th:text="${timetable.busStopName}"></thead>
-							<tbody>
-								<tr>
-									<td>Time</td>
-									<td>Line</td>
-									<td>Direction</td>
-								</tr>
-								<tr th:each="departure: ${timetable.departures.all}">
-									<td th:text="${departure.best_departure_estimate}"></td>
-									<td th:text="${departure.line_name}"></td>
-									<td th:text="${departure.direction}"></td>
-								</tr>
-							</tbody>
-						</table>
-					</tr>
-				</tbody>
-			</table>
+		<div class="jumbotron">
+			<h2 th:text="'Bus information near ' + ${busInfo.postcode}"></h2>
 		</div>
+		<table style="width:100%">
+			<tr th:each="timetable: ${busInfo.timetables}">
+				<h4 th:text="${timetable.busStopName}"></h4>
+				<table style="width:100%; border:1px solid black; border-collapse: collapse;">
+					<tr style="border:1px solid black; border-collapse: collapse;">
+						<th style="width:80px">Time</th>
+						<th style="width:80px">Line</th>
+						<th>Direction</th>
+					</tr>
+					<tr th:each="departure: ${timetable.departures.all}">
+						<td th:text="${departure.best_departure_estimate}"></td>
+						<td th:text="${departure.line_name}"></td>
+						<td th:text="${departure.direction}"></td>
+					</tr>
+				</table>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
