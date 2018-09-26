@@ -13,8 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ApiHandler {
-	
 	private final Integer max_number_of_buses = 6;
+	private final Integer max_distance_to_search_for_stops = 1000; //in meters
 	
 	private final String app_id = "2e66d564";
 	private final String app_key = "c30acca6ae1ea945a9855d194b2c2b1f";
@@ -52,7 +52,7 @@ public class ApiHandler {
 		this.URL = "http://transportapi.com/v3/uk/places.json?lat="+lat+"&lon="+lon+"&type=bus_stop&app_id="+app_id+"&app_key="+app_key;
 		makeRequest();
 		BusStops results = this.gson.fromJson(this.response.readEntity(String.class), BusStops.class);
-		if (this.responseStatus != 200 || results == null) {
+		if (this.responseStatus != 200 || results.getStops().get(0).getDistance() > max_distance_to_search_for_stops) {
 			throw new BadAPIResponseException("No bus stops found nearby", this.response.getStatusInfo().getReasonPhrase());
 		}
 		return results;
